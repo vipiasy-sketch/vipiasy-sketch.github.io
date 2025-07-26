@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noble AFFIS CONSULT | www.nobleaffis.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #2a5298);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .logo span {
+            color: #ffd700;
+        }
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .dropdown-btn:hover {
+            background: #2980b9;
+        }
+        .dropdown-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 300px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee;
+            transition: all 0.2s ease;
+        }
+        .dropdown-content a:hover {
+            background: #f1f8ff;
+            padding-left: 25px;
+        }
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #3498db;
+            animation: fadeIn 1.5s ease;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn-outline {
+            background: transparent;
+            margin-left: 15px;
+        }
+        .btn-outline:hover {
+            background: #3498db;
+        }
+        .btn-download {
+            background: #27ae60;
+            border-color: #27ae60;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .btn-download:hover {
+            background: transparent;
+        }
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        /* Dropdown Service Buttons */
+        .service-dropdowns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .service-dropdown {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-dropdown:hover {
+            transform: translateY(-5px);
+        }
+        .service-header {
+            padding: 25px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .service-header h3 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .service-header h3 i {
+            margin-right: 10px;
+        }
+        .service-header i:last-child {
+            transition: transform 0.3s ease;
+        }
+        .service-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        .service-content.show {
+            padding: 25px;
+            max-height: 3000px;
+        }
+        .service-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .service-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .service-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .service-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .service-item h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .service-item p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+        /* Educational Consult */
+        .educational .service-header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+        }
+        /* Electronic & Multimedia */
+        .electronic .service-header {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        /* General & Catering */
+        .general .service-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        /* Security Services Section */
+        .security-services {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .security-header {
+            background: linear-gradient(135deg, #f39c12, #d35400);
+            color: white;
+            padding: 25px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .security-header h3 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .security-header h3 i {
+            margin-right: 10px;
+        }
+        .security-header i:last-child {
+            transition: transform 0.3s ease;
+        }
+        .security-content {
+            padding: 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        .security-content.show {
+            padding: 25px;
+            max-height: 2000px;
+        }
+        .security-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .security-service-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .security-service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .security-service-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .security-service-card h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .security-service-card p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .security-service-card .btn {
+            margin-top: 15px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #1a2a6c, #2a5298);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 20px;
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .client {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .client img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        .client-info h4 {
+            margin-bottom: 5px;
+        }
+        .client-info p {
+            color: #7f8c8d;
+            font-style: normal;
+            font-size: 0.9rem;
+        }
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .contact-detail {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .contact-text h4 {
+            margin-bottom: 5px;
+        }
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #3498db;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        .footer-col ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-col ul li a:hover {
+            color: #3498db;
+            padding-left: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-5px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+        /* Primary Contact Highlight */
+        .primary-contact {
+            background: #e9f7fe;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .primary-contact h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .primary-contact p {
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+        .primary-contact a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .primary-contact a:hover {
+            text-decoration: underline;
+        }
+        /* Downloadable Forms Section */
+        .downloadable-forms {
+            background: #f1f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .downloadable-forms h4 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .form-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .form-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: #3498db;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .form-link:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .form-link i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>NOBLE <span>AFFIS</span> CONSULT</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="dropdown">
+                        <button class="dropdown-btn" id="nobleaffisBtn">
+                            Nobleaffis Consult <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="nobleaffisDropdown">
+                            <a href="#educational"><i class="fas fa-graduation-cap"></i> Educational Consult</a>
+                            <a href="#electronic"><i class="fas fa-laptop"></i> Electronic & Multimedia Services</a>
+                            <a href="#general"><i class="fas fa-glass-cheers"></i> General Decoration & Catering</a>
+                            <a href="#security-services"><i class="fas fa-shield-alt"></i> Security Services</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Your Gateway to Success</h2>
+            <p>Comprehensive consulting services in education, technology, multimedia, and event management. Trusted by thousands for quality and reliability.</p>
+            <div class="btn-container">
+                <a href="#services" class="btn">Explore Services</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Comprehensive Services</h2>
+                <p>We offer a wide range of professional services tailored to meet your specific needs in education, technology, multimedia, and events.</p>
+            </div>
+            
+            <div class="service-dropdowns">
+                <!-- Educational Consultancy -->
+                <div id="educational" class="service-dropdown educational">
+                    <div class="service-header" onclick="toggleService('educational')">
+                        <h3><i class="fas fa-graduation-cap"></i> Educational Consultancy</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="service-content" id="educational-content">
+                        <p>Our educational consultancy services help students achieve their academic goals through personalized guidance and support.</p>
+                        
+                        <div class="primary-contact">
+                            <h4>Contact Noble AFFIS First for All Inquiries</h4>
+                            <p><i class="fas fa-phone"></i> Phone: +233 24 552 4638 / +233 54 842 1055</p>
+                            <p><i class="fab fa-whatsapp"></i> WhatsApp: +233 50 819 5290</p>
+                            <p><i class="fas fa-envelope"></i> Email: nobleaffis@yahoo.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Digital Address: GJ-224-8736, Accra, Ghana</p>
+                        </div>
+                        
+                        <div class="service-items">
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Study Abroad">
+                                <h4>Study Abroad Programs</h4>
+                                <p>Guidance for international education opportunities in top universities worldwide.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="University Applications">
+                                <h4>University Applications</h4>
+                                <p>Complete application support for local and international universities.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Training College">
+                                <h4>Training College Applications</h4>
+                                <p>Assistance with nursing, teacher training, and other professional courses.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1588675646193-33a34e3595b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Security Services">
+                                <h4>Security Service Applications</h4>
+                                <p>Applications for Fire Service, Police, Prisons, Immigration, GAF, Ambulance.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Legal Documents">
+                                <h4>Affidavits & Declarations</h4>
+                                <p>Online processing, download, print, fill and WhatsApp submission.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Student Counseling">
+                                <h4>Student Counseling</h4>
+                                <p>Personalized academic and career counseling for students.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="downloadable-forms">
+                            <h4>Downloadable Application Forms</h4>
+                            <div class="form-links">
+                                <a href="educational-application-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Educational Application Form
+                                </a>
+                                <a href="study-abroad-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Study Abroad Form
+                                </a>
+                                <a href="university-application-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> University Application Form
+                                </a>
+                                <a href="training-college-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Training College Form
+                                </a>
+                                <a href="security-service-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Security Service Form
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Electronic & Multimedia Services -->
+                <div id="electronic" class="service-dropdown electronic">
+                    <div class="service-header" onclick="toggleService('electronic')">
+                        <h3><i class="fas fa-laptop"></i> Electronic & Multimedia Services</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="service-content" id="electronic-content">
+                        <p>Professional technology and multimedia solutions to enhance your business presence and operations.</p>
+                        
+                        <div class="primary-contact">
+                            <h4>Contact Noble AFFIS First for All Inquiries</h4>
+                            <p><i class="fas fa-phone"></i> Phone: +233 24 552 4638 / +233 54 842 1055</p>
+                            <p><i class="fab fa-whatsapp"></i> WhatsApp: +233 50 819 5290</p>
+                            <p><i class="fas fa-envelope"></i> Email: nobleaffis@yahoo.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Digital Address: GJ-224-8736, Accra, Ghana</p>
+                        </div>
+                        
+                        <div class="service-items">
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Social Media">
+                                <h4>Social Media Management</h4>
+                                <p>Professional management of your social media handles for maximum engagement.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Electronics Sale">
+                                <h4>Sale of Electronics</h4>
+                                <p>Laptops, Desktops, Printers & Photocopies at competitive prices.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Design Services">
+                                <h4>Designing Services</h4>
+                                <p>Creative design solutions for your business branding and marketing.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Business Cards">
+                                <h4>Business Cards</h4>
+                                <p>Professional business card design and printing services.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Print Services">
+                                <h4>Large Format Printing</h4>
+                                <p>High-quality large and small format printing solutions.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1521334884684-d80222895326?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="T-Shirt Printing">
+                                <h4>T-Shirt Printing</h4>
+                                <p>Screen printing and DTF printing services for custom apparel.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="downloadable-forms">
+                            <h4>Downloadable Application Forms</h4>
+                            <div class="form-links">
+                                <a href="electronic-services-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Electronic Services Form
+                                </a>
+                                <a href="social-media-management-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Social Media Management Form
+                                </a>
+                                <a href="electronics-sale-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Electronics Sale Form
+                                </a>
+                                <a href="design-services-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Design Services Form
+                                </a>
+                                <a href="printing-services-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Printing Services Form
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- General Decoration & Catering -->
+                <div id="general" class="service-dropdown general">
+                    <div class="service-header" onclick="toggleService('general')">
+                        <h3><i class="fas fa-glass-cheers"></i> General Decoration & Catering</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="service-content" id="general-content">
+                        <p>Exceptional event planning and decoration services to make your special occasions memorable.</p>
+                        
+                        <div class="primary-contact">
+                            <h4>Contact Noble AFFIS First for All Inquiries</h4>
+                            <p><i class="fas fa-phone"></i> Phone: +233 24 552 4638 / +233 54 842 1055</p>
+                            <p><i class="fab fa-whatsapp"></i> WhatsApp: +233 50 819 5290</p>
+                            <p><i class="fas fa-envelope"></i> Email: nobleaffis@yahoo.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Digital Address: GJ-224-8736, Accra, Ghana</p>
+                        </div>
+                        
+                        <div class="service-items">
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Weddings">
+                                <h4>Wedding Planning</h4>
+                                <p>Complete wedding planning and decoration services for your special day.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Funerals">
+                                <h4>Funeral Services</h4>
+                                <p>Comprehensive funeral planning and organization with dignity and respect.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Parties">
+                                <h4>Party Planning</h4>
+                                <p>Memorable party planning and execution for birthdays and celebrations.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Corporate Events">
+                                <h4>Corporate Events</h4>
+                                <p>Professional organization of corporate meetings, conferences, and seminars.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Catering">
+                                <h4>Catering Services</h4>
+                                <p>Delicious catering solutions for events of all sizes.</p>
+                            </div>
+                            <div class="service-item">
+                                <img src="https://images.unsplash.com/photo-1533779213481-6d9d1620b5dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Decoration">
+                                <h4>Custom Decoration</h4>
+                                <p>Creative decoration solutions for all types of events and venues.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="downloadable-forms">
+                            <h4>Downloadable Application Forms</h4>
+                            <div class="form-links">
+                                <a href="event-planning-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Event Planning Form
+                                </a>
+                                <a href="wedding-planning-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Wedding Planning Form
+                                </a>
+                                <a href="funeral-services-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Funeral Services Form
+                                </a>
+                                <a href="party-planning-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Party Planning Form
+                                </a>
+                                <a href="catering-services-form.pdf" class="form-link" download>
+                                    <i class="fas fa-file-pdf"></i> Catering Services Form
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Services Section -->
+            <div id="security-services" class="security-services">
+                <div class="security-header" onclick="toggleSecurityServices()">
+                    <h3><i class="fas fa-shield-alt"></i> Security Services Applications</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="security-content" id="security-content">
+                    <p>Assistance with applications for Ghanaian security services including Police, Fire Service, Prisons, Immigration, GAF, and Ambulance.</p>
+                    
+                    <div class="primary-contact">
+                        <h4>Contact Noble AFFIS First for All Inquiries</h4>
+                        <p><i class="fas fa-phone"></i> Phone: +233 24 552 4638 / +233 54 842 1055</p>
+                        <p><i class="fab fa-whatsapp"></i> WhatsApp: +233 50 819 5290</p>
+                        <p><i class="fas fa-envelope"></i> Email: nobleaffis@yahoo.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Digital Address: GJ-224-8736, Accra, Ghana</p>
+                    </div>
+                    
+                    <!-- Security Services Grid -->
+                    <div class="security-services-grid">
+                        <div class="security-service-card">
+                            <img src="https://images.unsplash.com/photo-1597773150790-df1cafe27be1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Police Recruitment">
+                            <h4>Police Recruitment</h4>
+                            <p>Guidance for applying to the Ghana Police Service.</p>
+                            <a href="police-application-form.pdf" class="btn btn-download" download>
+                                <i class="fas fa-file-pdf"></i> Download Form
+                            </a>
+                        </div>
+                        <div class="security-service-card">
+                            <img src="https://images.unsplash.com/photo-1593642632537-7b39c9241ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Fire Service Recruitment">
+                            <h4>Fire Service Recruitment</h4>
+                            <p>Assistance with applications for the Ghana Fire Service.</p>
+                            <a href="fire-service-application-form.pdf" class="btn btn-download" download>
+                                <i class="fas fa-file-pdf"></i> Download Form
+                            </a>
+                        </div>
+                        <div class="security-service-card">
+                            <img src="https://images.unsplash.com/photo-1593642632537-7b39c9241ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Prisons Recruitment">
+                            <h4>Prisons Recruitment</h4>
+                            <p>Support for applying to the Ghana Prisons Service.</p>
+                            <a href="prisons-application-form.pdf" class="btn btn-download" download>
+                                <i class="fas fa-file-pdf"></i> Download Form
+                            </a>
+                        </div>
+                        <div class="security-service-card">
+                            <img src="https://images.unsplash.com/photo-1593642632537-7b39c9241ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Immigration Recruitment">
+                            <h4>Immigration Recruitment</h4>
+                            <p>Help with applications for the Ghana Immigration Service.</p>
+                            <a href="immigration-application-form.pdf" class="btn btn-download" download>
+                                <i class="fas fa-file-pdf"></i> Download Form
+                            </a>
+                        </div>
+                        <div class="security-service-card">
+                            <img src="https://images.unsplash.com/photo-1593642632537-7b39c9241ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="GAF Recruitment">
+                            <h4>GAF Recruitment</h4>
+                            <p>Guidance for applying to the Ghana Armed Forces.</p>
+                            <a href="gaf-application-form.pdf" class="btn btn-download" download>
+                                <i class="fas fa-file-pdf"></i> Download Form
+                            </a>
+                        </div>
+                        <div class="security-service-card">
+                            <img src="https://images.unsplash.com/photo-1593642632537-7b39c9241ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ambulance Recruitment">
+                            <h4>Ambulance Recruitment</h4>
+                            <p>Assistance with applications for ambulance services.</p>
+                            <a href="ambulance-application-form.pdf" class="btn btn-download" download>
+                                <i class="fas fa-file-pdf"></i> Download Form
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- General Security Application Form -->
+                    <div style="text-align: center; margin-top: 30px;">
+                        <h3>General Security Services Application Form</h3>
+                        <a href="general-security-application-form.pdf" class="btn btn-download" download>
+                            <i class="fas fa-file-pdf"></i> Download General Application Form
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <h3>1500+</h3>
+                <p>Students Placed Abroad</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Successful Events</p>
+            </div>
+            <div class="stat-item">
+                <h3>250+</h3>
+                <p>Business Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3>10+</h3>
+                <p>Years of Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from our satisfied clients about their experiences with our services</p>
+            </div>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p>"Noble AFFIS helped me secure admission to my dream university in Canada. Their guidance throughout the entire process was invaluable. I couldn't have done it without them!"</p>
+                    <div class="client">
+                        <div class="client-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Study Abroad Client</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Our company's branding and marketing materials were transformed by Noble AFFIS's multimedia team. The quality of work exceeded our expectations. Highly recommended!"</p>
+                    <div class="client">
+                        <div class="client-info">
+                            <h4>Michael Thompson</h4>
+                            <p>Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"The wedding planning services were exceptional. Every detail was perfectly executed. Our guests are still talking about how beautiful everything was. Thank you Noble AFFIS!"</p>
+                    <div class="client">
+                        <div class="client-info">
+                            <h4>James & Emily Wilson</h4>
+                            <p>Wedding Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for any inquiries or to schedule a consultation</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Our Location</h4>
+                            <p>Digital Address: GJ-224-8736<br>Accra, Ghana</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone Numbers</h4>
+                            <p>+233 24 552 4638<br>+233 54 842 1055</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Office WhatsApp</h4>
+                            <p>+233 50 819 5290</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Address</h4>
+                            <p>nobleaffis@yahoo.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Select Service</option>
+                                <option value="educational">Educational Consultancy</option>
+                                <option value="electronic">Electronic & Multimedia Services</option>
+                                <option value="event">Event Organization</option>
+                                <option value="security">Security Services</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Noble AFFIS Consult</h4>
+                    <p>Your trusted partner for comprehensive consulting services in education, technology, multimedia, and events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#educational">Educational Consultancy</a></li>
+                        <li><a href="#electronic">Electronic Services</a></li>
+                        <li><a href="#electronic">Multimedia Design</a></li>
+                        <li><a href="#general">Event Organization</a></li>
+                        <li><a href="#general">Decoration Services</a></li>
+                        <li><a href="#security-services">Security Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Noble AFFIS CONSULT. All Rights Reserved. | www.nobleaffis.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle dropdown for Nobleaffis Consult button
+        document.getElementById('nobleaffisBtn').addEventListener('click', function() {
+            document.getElementById('nobleaffisDropdown').classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropdown-btn')) {
+                var dropdowns = document.getElementsByClassName('dropdown-content');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        });
+
+        // Toggle service content
+        function toggleService(serviceId) {
+            const content = document.getElementById(serviceId + '-content');
+            const icon = document.querySelector(`#${serviceId} .service-header i:last-child`);
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all other service contents
+                document.querySelectorAll('.service-content').forEach(el => {
+                    if (el.id !== serviceId + '-content') {
+                        el.classList.remove('show');
+                        const otherIcon = el.previousElementSibling.querySelector('i:last-child');
+                        if (otherIcon) {
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+                content.classList.add('show');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Toggle Security Services content
+        function toggleSecurityServices() {
+            const content = document.getElementById('security-content');
+            const icon = document.querySelector('#security-services .security-header i:last-child');
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('show');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.querySelector('.footer-col form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for subscribing to our newsletter!');
+                this.reset();
+            });
+        }
+        
+        // Download all forms as PDF
+        function downloadAllForms() {
+            const forms = [
+                'educational-application-form.pdf',
+                'study-abroad-form.pdf',
+                'university-application-form.pdf',
+                'training-college-form.pdf',
+                'security-service-form.pdf',
+                'electronic-services-form.pdf',
+                'social-media-management-form.pdf',
+                'electronics-sale-form.pdf',
+                'design-services-form.pdf',
+                'printing-services-form.pdf',
+                'event-planning-form.pdf',
+                'wedding-planning-form.pdf',
+                'funeral-services-form.pdf',
+                'party-planning-form.pdf',
+                'catering-services-form.pdf',
+                'police-application-form.pdf',
+                'fire-service-application-form.pdf',
+                'prisons-application-form.pdf',
+                'immigration-application-form.pdf',
+                'gaf-application-form.pdf',
+                'ambulance-application-form.pdf',
+                'general-security-application-form.pdf'
+            ];
+            
+            alert('Preparing all forms for download. Please allow a moment for all files to download.');
+            
+            forms.forEach(form => {
+                const link = document.createElement('a');
+                link.href = form;
+                link.download = form;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        }
+    </script>
+</body>
+</html>
