@@ -1,0 +1,57 @@
+import streamlit as st
+import pandas as pd
+from datetime import date
+import os
+
+st.set_page_config(page_title="Noble-Affis Consult Invoice System")
+
+st.title("🧾 NOBLE-AFFIS CONSULT – INVOICE SYSTEM")
+st.write("📞 0246856667 | Office WhatsApp: 0508195290")
+
+# Auto invoice number
+if "invoice_no" not in st.session_state:
+    st.session_state.invoice_no = 1001
+
+invoice_no = f"NAC-{st.session_state.invoice_no}"
+
+st.subheader(f"Invoice Number: {invoice_no}")
+invoice_date = st.date_input("Invoice Date", date.today())
+
+# Customer info
+st.subheader("Customer Details")
+customer_name = st.text_input("Customer Name")
+customer_address = st.text_input("Address")
+customer_phone = st.text_input("Phone")
+
+# Items
+st.subheader("Invoice Items")
+items = st.experimental_data_editor(
+    pd.DataFrame({
+        "Description": [""],
+        "Quantity": [1],
+        "Unit Price": [0.0]
+    }),
+    num_rows="dynamic"
+)
+
+items["Total"] = items["Quantity"] * items["Unit Price"]
+subtotal = items["Total"].sum()
+vat = subtotal * 0.125
+grand_total = subtotal + vat
+
+st.write("Subtotal:", subtotal)
+st.write("VAT (12.5%):", vat)
+st.write("Grand Total:", grand_total)
+
+if st.button("Generate Invoice"):
+    df = items.copy()
+    df.loc["TOTAL"] = ["", "", "", grand_total]
+
+    st.success("Invoice Generated Successfully!")
+    st.download_button(
+        "Download Invoice (Excel)",
+        df.to_csv(index=False),
+        file_name=f"{invoice_no}.csv"
+    )
+
+    st.session_state.invoice_no += 1
